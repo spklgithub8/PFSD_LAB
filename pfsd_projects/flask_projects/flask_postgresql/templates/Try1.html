@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Add Student
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('add_student') }}" method="POST">
+                        <div class="mb-3">
+                            <label for="regnum" class="form-label">REGNUM</label>
+                            <input type="number" class="form-control" id="regnum" name="regnum" placeholder="Enter REGNUM" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject1" class="form-label">Subject 1</label>
+                            <input type="text" class="form-control" id="subject1" name="subject1" placeholder="Enter Subject 1" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject2" class="form-label">Subject 2</label>
+                            <input type="text" class="form-control" id="subject2" name="subject2" placeholder="Enter Subject 2" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Student Data
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>REGNUM</th>
+                                <th>Name</th>
+                                <th>Subject 1</th>
+                                <th>Subject 2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ student[0] }}</td>
+                                <td>{{ student[1] }}</td>
+                                <td>{{ student[2] }}</td>
+                                <td>{{ student[3] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
